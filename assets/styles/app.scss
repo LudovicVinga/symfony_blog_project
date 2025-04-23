@@ -1,0 +1,18 @@
+// Abstract
+$primary: #b4a284;
+$secondary: #a2a595;
+$light: #f6ead4;
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+// Base
+@import url("./base/_typography.scss");
+
+// Components
+
+// Layout
+
+// Pages
+
+// Themes

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {# La description de la page #}
-    <meta name="description" content="{% block title %}{% endblock %}">
+    <meta name="description" content="{% block description %}{% endblock %}">
 
     {# Le titre de la page #}
     <title> {% block title %}{% endblock %} </title>
@@ -25,24 +25,63 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    {# Bootstrap v5.3 CDN #}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    {# Bootstrap v5.3 CSS #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-    {# Lien CSS de notre propre feuille de style #}
-    <link rel="stylesheet" href="/styles/app.css">
+    {# Bootstrap v5.3 js #}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 
 </head>
-<body>
+<body class="bg-light">
 
     {# Navbar #}
+    <nav class="navbar navbar-expand-lg bg-secondary shadow mb-5 py-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path('app_visitor_welcome') }}">BLOG PROJECT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ path('app_visitor_welcome') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">A propos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_visitor_blog') }}">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_visitor_contact') }}">Contact</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Connexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Inscription</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
 
     {# Main #}
+    <main>
+        {% block main %}{% endblock %}
+    </main>
 
     {# Footer #}
+    <footer class="text-center">
+        <span>Dwwm20</span>
+    </footer>
 
-    {# Scripts #}
-
-    {# Bootstrap v5.3 script #}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 </html>

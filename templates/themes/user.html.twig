@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+    {# Encodage standard des caractères pour le web #}
+    <meta charset="UTF-8">
+
+    {# Minimum de Responsive Design à toujours mettre en place #}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# La description de la page #}
+    <meta name="description" content="{% block description %}{% endblock %}">
+
+    {# Le titre de la page #}
+    <title> {% block title %}{% endblock %} </title>
+
+    {# SEO - Autorisation aux robots des moteurs de recherche d'indexer et de suivre la page#}
+    <meta name="robots" content="index, follow">
+
+    {# Les mots clés de la page #}
+    <meta name="keywords" content="{% block keywords %}{% endblock %}">
+
+    {# Google font #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    {# Bootstrap v5.3 CSS #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {# Bootstrap v5.3 js #}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
+</head>
+<body class="bg-light">
+    {% block main %} {% endblock %}
+</body>
+
+<footer class="text-center">
+    <span>Dwwm20</span>
+</footer>
+</html>

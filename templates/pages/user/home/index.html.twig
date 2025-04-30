@@ -1,0 +1,9 @@
+{% extends 'themes/base_user.html.twig' %}
+
+{% block title %}Espace utilisateur{% endblock %}
+
+{% block description %}Espace utilisateur{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-3 display-5 fw-bold">Bonjour {{app.user.firstName}} {{app.user.lastName}}</h1>
+{% endblock %}

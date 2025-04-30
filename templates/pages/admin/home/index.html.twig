@@ -1,0 +1,9 @@
+{% extends 'themes/base_admin.html.twig' %}
+
+{% block title %}Tableau de bord administrateur{% endblock %}
+
+{% block description %}Espace réservé à l'administrateur{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-3 display-5">Bonjour {{app.user.firstName}} {{app.user.lastName}}</h1>
+{% endblock %}

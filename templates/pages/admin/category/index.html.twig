@@ -6,4 +6,10 @@
 
 {% block main %}
     <h1 class="text-center my-3 display-5">Liste des catégories</h1>
+
+    {% include 'components/alert.html.twig' %}
+
+    <div class="d-flex justify-content-end align-items-center">
+        <a href="{{ path('app_admin_category_create') }}" class="btn btn-dark shadow"><i class="fa fa-plus" aria-hidden="true"></i>Nouvelle catégorie</a>
+    </div>
 {% endblock %}

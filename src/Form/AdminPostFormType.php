@@ -26,7 +26,16 @@ class AdminPostFormType extends AbstractType
             ])
             ->add('description', TextType::class)
             ->add('keywords', TextType::class)
-            ->add('imageFile', VichImageType::class)
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'delete_label' => 'Supprimer',
+                'download_label' => 'Télécharger',
+                'download_uri' => false,
+                'image_uri' => false,
+                'imagine_pattern' => null,
+                'asset_helper' => true,
+                ])
             ->add('content', TextareaType::class)
         ;
     }

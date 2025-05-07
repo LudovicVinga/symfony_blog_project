@@ -55,7 +55,7 @@
                             <a href="{{ path('app_admin_category_edit', {'id':category.id}) }}" class="btn btn-sm btn-secondary">Modifier</a>
                             <form action="{{ path('app_admin_category_delete', {'id':category.id}) }}" method="POST" class="d-inline">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token('delete_category_'~category.id) }}">
-                                <input type="submit" value="Supprimer" class="btn btn-sm btn-danger" onclick="return confirm('Confirmer la suppression?')">
+                                <input type="submit" value="Supprimer" class="btn btn-sm btn-danger" onclick="return confirm('Confirmer la suppression? Vous supprimerez également tous les articles associés.')">
                             </form>
                         </td>
                 </tr>

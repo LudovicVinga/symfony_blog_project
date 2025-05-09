@@ -1,0 +1,26 @@
+{% extends 'themes/base_admin.html.twig' %}
+
+{% block title %}Modifier ce tag{% endblock %}
+
+{% block description %}Page de modification du tags{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-3 display-5">Modifier le tag: {{tag.name}}</h1>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-10 col-lg-6 mx-auto shadow p-4">
+                {{form_start(form)}}
+                    <div class="mb-3">
+                        <label for="admin_tag_form_name" class="mb-3">Nouveau nom du tag</label>
+                        <div class="text-danger"> {{ form_errors(form.name) }} </div>
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control', 'autofocus':'autofocus'}}) }}
+                    </div>
+                    <div>
+                        <input formnovalidate type="submit" class="btn btn-dark shadow" value="Modifier">
+                    </div>
+                {{form_end(form)}}
+            </div>
+        </div>
+    </div>
+{% endblock %}

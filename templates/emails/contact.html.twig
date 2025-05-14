@@ -1,0 +1,23 @@
+<h1>Bonjour Jean Dupont,</h1>
+
+<p>Vous avez reçu un message de <strong>{{ contact_first_name }} {{ contact_last_name }}</strong> en provenance de votre blog.</p>
+
+<p>Voici ses coordonnées:</p>
+
+<ul>
+    <li>
+        <strong>Email</strong>: {{ contact_email }}
+    </li>
+    <li>
+        <strong>Téléphone</strong>: {{ contact_phone ? contact_phone : 'Non renseigné' }}
+    </li>
+</ul>
+
+<div>
+    <p>
+        <strong>Le message:</strong>
+    </p>
+    <p>
+        {{ contact_message }}
+    </p>
+</div>

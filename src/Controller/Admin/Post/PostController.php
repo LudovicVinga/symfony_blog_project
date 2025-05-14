@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use App\Form\AdminPostFormType;
 use App\Repository\PostRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -69,10 +70,22 @@ final class PostController extends AbstractController
 
 
     #[Route('/post/show/{id<\d+>}', name: 'app_admin_post_show', methods:['GET'])]
-    public function show(Post $post): Response
+    public function show(Post $post, UserRepository $userRepository): Response
     {
+
+        $superAdmin = null;
+        $users = $userRepository->findAll();
+        foreach ($users as $user)
+        {
+            if ( in_array('ROLE_SUPER_ADMIN', $user->getRoles()) )
+            {
+                $superAdmin = $user;
+            }
+        }
+
         return $this->render('pages/admin/post/show.html.twig', [
-            "post" => $post
+            "post" => $post,
+            "superAdmin" => $superAdmin
         ]);
     }
 

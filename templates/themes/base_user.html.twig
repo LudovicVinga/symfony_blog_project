@@ -47,6 +47,11 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ path('app_user_home') }}">Espace utilisateur</a>
                 </li>
+                
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="nav-link" href="{{ path('app_admin_home') }}">Espace Admin</a>
+                {% endif %}
+                
                 <li class="nav-item">
                     <a class="nav-link" href="#">Mon profil</a>
                 </li>

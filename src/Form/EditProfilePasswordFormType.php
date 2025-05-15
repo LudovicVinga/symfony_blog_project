@@ -18,6 +18,11 @@ class EditProfilePasswordFormType extends AbstractType
     {
         $builder
             ->add('currentPassword', PasswordType::class, [
+                'constraints' => [
+                    new UserPassword ([
+                        "message" => "Le mot de passe est érroné."
+                    ])
+                ]
                 
             ])
             ->add('plainPassword', RepeatedType::class, [

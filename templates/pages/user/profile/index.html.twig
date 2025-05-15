@@ -1,0 +1,31 @@
+{% extends 'themes/base_user.html.twig' %}
+
+
+{% block title %}Mon profil utilisateur{% endblock %}
+
+{% block description %}Gestion de mon profil utilisateur{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-3 display-5">Mon profil utilisateur</h1>
+
+    {% include 'components/alert.html.twig' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto shadow bg-secondary">
+                <div class="my-4">
+                    <p> <strong>Prénom</strong>: {{user.firstName}} </p>
+
+                    <p> <strong>Nom</strong>: {{user.lastName}} </p>
+
+                    <p> <strong>Email</strong>: {{user.email}} </p>
+
+                    <div>
+                        <a href="{{ path('app_user_profile_edit') }}" class="btn btn-sm btn-primary">Modifier le profil</a>
+                        <a href="{{ path('app_user_profile_edit_password') }}" class="btn btn-sm btn-light">Changer le mot de passe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

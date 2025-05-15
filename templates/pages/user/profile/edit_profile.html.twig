@@ -1,0 +1,36 @@
+{% extends 'themes/base_user.html.twig' %}
+
+{% block title %}Modifiez votre profil{% endblock %}
+
+{% block description %}Modification du profil{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-3 display-5">Modification de votre profil utilisateur</h1>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto shadow p-4">
+                {{form_start(form)}}
+                    <div class="mb-3">
+                        <label for="edit_profile_form_firstName">Prénom</label>
+                        <div class="text-danger">{{form_errors(form.firstName)}}</div>
+                        {{form_widget(form.firstName, {'attr': {'class':'form-control', 'autofocus': 'autofocus'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_profile_form_lastName">Nom</label>
+                        <div class="text-danger">{{form_errors(form.lastName)}}</div>
+                        {{form_widget(form.lastName, {'attr': {'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_profile_form_email">Email</label>
+                        <div class="text-danger">{{form_errors(form.email)}}</div>
+                        {{form_widget(form.email, {'attr': {'class':'form-control'}})}}
+                    </div>
+                    <div>
+                        <input formnovalidate type="submit" class="btn btn-dark w-100 shadow" value="Modifier">
+                    </div>
+                {{form_end(form)}}
+            </div>
+        </div>
+    </div>
+{% endblock %}

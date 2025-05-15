@@ -17,7 +17,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 #[Route('/user')]
 final class ProfileController extends AbstractController
 {
-    #[Route('/user/profile/index', name: 'app_user_profile_index')]
+    #[Route('/profile/index', name: 'app_user_profile_index')]
     public function index(): Response
     {
         $user = $this->getUser();
@@ -29,7 +29,7 @@ final class ProfileController extends AbstractController
 
 
 
-    #[Route('/user/profile/edit', name: 'app_user_profile_edit', methods:['GET','POST'])]
+    #[Route('/profile/edit', name: 'app_user_profile_edit', methods:['GET','POST'])]
     public function editProfile(Request $request, EntityManagerInterface $entityManager): Response
     {
 
@@ -59,13 +59,9 @@ final class ProfileController extends AbstractController
 
 
 
-    #[Route('/user/profile/edit/password', name: 'app_user_profile_edit_password', methods:['GET','POST'])]
+    #[Route('/profile/edit/password', name: 'app_user_profile_edit_password', methods:['GET','POST'])]
     public function editPassword(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $hasher): Response
-    {
-        /**
-         *  @var User
-         */
-        $user = $this->getUser();
+    {   
 
         $form = $this->createForm(EditProfilePasswordFormType::class, null);
         $form->handleRequest($request);
@@ -74,6 +70,11 @@ final class ProfileController extends AbstractController
         {
             $data = $form->getData();
             $newPlainPassword = $data['plainPassword'];
+
+            /**
+            *  @var User
+            */
+            $user = $this->getUser();
 
             $passwordHashed = $hasher->hashPassword($user, $newPlainPassword);
             $user->setPassword($passwordHashed);
